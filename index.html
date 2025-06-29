@@ -3,70 +3,1258 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>G-BAKA Welding and Fabrication | Precision in Every Weld</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>G-BAKA | Precision Welding & Fabrication</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'steel-blue': '#4682B4',
+                        'aluminum-silver': '#C0C0C0',
+                        'safety-orange': '#FF6700',
+                        'charcoal-gray': '#36454F',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom CSS for elements that need more specific styling */
+        .hero-section {
+            background: linear-gradient(rgba(54, 69, 79, 0.8), rgba(54, 69, 79, 0.8)),
+                        url('https://images.unsplash.com/photo-1581093450021-4a7360e9a7d0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .portfolio-item {
+            transition: all 0.3s ease;
+        }
+
+        .portfolio-item:hover {
+            transform: scale(1.03);
+        }
+
+        .testimonial-card {
+            background: linear-gradient(145deg, #ffffff, #f1f1f1);
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90%;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 35px;
+            cursor: pointer;
+        }
+
+        .material-tabs {
+            border-bottom: 2px solid #C0C0C0;
+        }
+
+        .material-tab.active {
+            border-bottom: 3px solid #FF6700;
+            color: #FF6700;
+        }
+
+        /* Animation for CTA button */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .pulse-animation {
+            animation: pulse 2s infinite;
+        }
+    </style>
 </head>
-<body>
-    <header>
-        <div class="container">
-            <div id="logo-placeholder">G-BAKA Logo</div>
-            <nav>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="metal-fabrication.html">Metal Fabrication</a></li>
-                    <li><a href="welding-services.html">Welding</a></li>
-                    <li><a href="aluminum-solutions.html">Aluminum</a></li>
-                    <li><a href="pvc-systems.html">PVC Systems</a></li>
-                    <li><a href="#portfolio">Portfolio</a></li>
-                    <li><a href="#about">About Us</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
+<body class="font-sans bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-charcoal-gray text-white sticky top-0 z-50 shadow-lg">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i class="fas fa-wrench text-safety-orange text-2xl"></i>
+                <a href="#" class="text-xl font-bold">G-BAKA</a>
+                <span class="text-sm hidden md:block">Precision in Every Weld</span>
+            </div>
+
+            <div class="hidden md:flex space-x-6">
+                <a href="#home" class="hover:text-safety-orange transition">Home</a>
+                <a href="#services" class="hover:text-safety-orange transition">Services</a>
+                <a href="#portfolio" class="hover:text-safety-orange transition">Portfolio</a>
+                <a href="#about" class="hover:text-safety-orange transition">About</a>
+                <a href="#contact" class="hover:text-safety-orange transition">Contact</a>
+            </div>
+
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-white focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
         </div>
-    </header>
 
-    <main>
-        <section id="hero">
-            <div class="container">
-                <h1>Precision in Every Weld</h1>
-                <p>Your trusted partner for custom metal fabrication, industrial welding, and premium window solutions.</p>
-                <a href="#quote-request" class="cta-button">Get Free Estimate</a>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-steel-blue">
+            <div class="container mx-auto px-4 py-2 flex flex-col space-y-3">
+                <a href="#home" class="block py-2 hover:text-safety-orange transition">Home</a>
+                <a href="#services" class="block py-2 hover:text-safety-orange transition">Services</a>
+                <a href="#portfolio" class="block py-2 hover:text-safety-orange transition">Portfolio</a>
+                <a href="#about" class="block py-2 hover:text-safety-orange transition">About</a>
+                <a href="#contact" class="block py-2 hover:text-safety-orange transition">Contact</a>
             </div>
-        </section>
+        </div>
+    </nav>
 
-        <section id="services-overview">
-            <div class="container">
-                <h2>Our Services</h2>
-                <!-- Placeholder for services icons + brief descriptions -->
-                <p>Detailed service overview coming soon.</p>
+    <!-- Hero Section -->
+    <section id="home" class="hero-section text-white py-20 md:py-32">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6">Precision Metal Fabrication & Welding</h1>
+            <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">Commercial & residential solutions crafted with 10+ years of expertise in Lagos</p>
+
+            <div class="flex flex-col md:flex-row justify-center gap-4">
+                <a href="#contact" class="bg-safety-orange hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-full transition duration-300 pulse-animation">
+                    Get Free Estimate
+                </a>
+                <a href="tel:+2341234567890" class="bg-transparent border-2 border-white hover:bg-white hover:text-charcoal-gray text-white font-bold py-3 px-8 rounded-full transition duration-300">
+                    <i class="fas fa-phone mr-2"></i> Call Now
+                </a>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="portfolio-highlights">
-            <div class="container">
-                <h2>Portfolio Highlights</h2>
-                <!-- Placeholder for 4-6 standout projects -->
-                <p>Showcase of our best work coming soon.</p>
+    <!-- Trust Signals -->
+    <div class="bg-steel-blue text-white py-6">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16">
+                <div class="flex items-center">
+                    <i class="fas fa-award text-3xl mr-3 text-safety-orange"></i>
+                    <span>10+ Years Experience</span>
+                </div>
+                <div class="flex items-center">
+                    <i class="fas fa-check-circle text-3xl mr-3 text-safety-orange"></i>
+                    <span>Certified Welders</span>
+                </div>
+                <div class="flex items-center">
+                    <i class="fas fa-shield-alt text-3xl mr-3 text-safety-orange"></i>
+                    <span>Quality Guarantee</span>
+                </div>
+                <div class="flex items-center">
+                    <i class="fas fa-truck text-3xl mr-3 text-safety-orange"></i>
+                    <span>Free Site Assessment</span>
+                </div>
             </div>
-        </section>
+        </div>
+    </div>
 
-        <section id="trust-signals">
-            <div class="container">
-                <h2>Why Choose G-BAKA?</h2>
-                <!-- Placeholder for certifications, years in business -->
-                <p>Trust signals (certifications, years in business) will be displayed here.</p>
+    <!-- Services Section -->
+    <section id="services" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 text-charcoal-gray">Our Specialized Services</h2>
+            <p class="text-center text-gray-600 max-w-2xl mx-auto mb-12">Custom solutions for residential, commercial, and industrial applications</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Service 1 -->
+                <div class="service-card bg-gray-50 rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <div class="h-48 bg-steel-blue flex items-center justify-center">
+                        <i class="fas fa-industry text-white text-6xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3 text-charcoal-gray">Metal Fabrication</h3>
+                        <p class="text-gray-600 mb-4">Custom gates, railings, and structural components tailored to your specifications.</p>
+                        <a href="#metal-fabrication" class="text-safety-orange font-semibold hover:underline">Learn More <i class="fas fa-arrow-right ml-1"></i></a>
+                    </div>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="service-card bg-gray-50 rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <div class="h-48 bg-steel-blue flex items-center justify-center">
+                        <i class="fas fa-fire text-white text-6xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3 text-charcoal-gray">Welding Services</h3>
+                        <p class="text-gray-600 mb-4">Industrial, decorative, and repair welding using MIG, TIG, and ARC techniques.</p>
+                        <a href="#welding-services" class="text-safety-orange font-semibold hover:underline">Learn More <i class="fas fa-arrow-right ml-1"></i></a>
+                    </div>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="service-card bg-gray-50 rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <div class="h-48 bg-steel-blue flex items-center justify-center">
+                        <i class="fas fa-window-maximize text-white text-6xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3 text-charcoal-gray">Aluminum Solutions</h3>
+                        <p class="text-gray-600 mb-4">High-quality aluminum windows, sliding doors, and shop fronts for any property.</p>
+                        <a href="#aluminum-solutions" class="text-safety-orange font-semibold hover:underline">Learn More <i class="fas fa-arrow-right ml-1"></i></a>
+                    </div>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="service-card bg-gray-50 rounded-lg overflow-hidden shadow-md transition duration-300">
+                    <div class="h-48 bg-steel-blue flex items-center justify-center">
+                        <i class="fas fa-building text-white text-6xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3 text-charcoal-gray">PVC Systems</h3>
+                        <p class="text-gray-600 mb-4">Energy-efficient PVC windows and balcony enclosures with superior insulation.</p>
+                        <a href="#pvc-systems" class="text-safety-orange font-semibold hover:underline">Learn More <i class="fas fa-arrow-right ml-1"></i></a>
+                    </div>
+                </div>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2023 G-BAKA Welding and Fabrication. All rights reserved.</p>
-            <!-- Placeholder for contact info -->
-            <p>Contact information will be here.</p>
+    <!-- Material Comparison Section -->
+    <section class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-8 text-charcoal-gray">Aluminum vs PVC: Which is Right for You?</h2>
+
+            <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="flex border-b material-tabs">
+                    <button class="material-tab py-4 px-6 font-semibold active" data-tab="aluminum">Aluminum</button>
+                    <button class="material-tab py-4 px-6 font-semibold" data-tab="pvc">PVC</button>
+                    <button class="material-tab py-4 px-6 font-semibold" data-tab="comparison">Comparison</button>
+                </div>
+
+                <div class="p-6">
+                    <div id="aluminum-content" class="tab-content active">
+                        <div class="grid md:grid-cols-2 gap-8">
+                            <div>
+                                <h3 class="text-xl font-bold mb-4 text-steel-blue">Aluminum Benefits</h3>
+                                <ul class="space-y-3">
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check-circle text-safety-orange mt-1 mr-2"></i>
+                                        <span>Exceptional durability and strength</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check-circle text-safety-orange mt-1 mr-2"></i>
+                                        <span>Modern, sleek appearance</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check-circle text-safety-orange mt-1 mr-2"></i>
+                                        <span>Low maintenance requirements</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check-circle text-safety-orange mt-1 mr-2"></i>
+                                        <span>Excellent for large window spans</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check-circle text-safety-orange mt-1 mr-2"></i>
+                                        <span>100% recyclable material</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div>
+                                <img src="https://images.unsplash.com/photo-1600585152220-90363fe7e115?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Aluminum windows" class="rounded-lg shadow-sm">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="pvc-content" class="tab-content hidden">
+                        <div class="grid md:grid-cols-2 gap-8">
+                            <div>
+                                <h3 class="text-xl font-bold mb-4 text-steel-blue">PVC Benefits</h3>
+                                <ul class="space-y-3">
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check-circle text-safety-orange mt-1 mr-2"></i>
+                                        <span>Superior thermal insulation</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check-circle text-safety-orange mt-1 mr-2"></i>
+                                        <span>Cost-effective solution</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check-circle text-safety-orange mt-1 mr-2"></i>
+                                        <span>Excellent noise reduction</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check-circle text-safety-orange mt-1 mr-2"></i>
+                                        <span>Wide range of colors and finishes</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check-circle text-safety-orange mt-1 mr-2"></i>
+                                        <span>Resistant to corrosion and weathering</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div>
+                                <img src="https://images.unsplash.com/photo-1600566752227-17c0b2d2f0e6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="PVC windows" class="rounded-lg shadow-sm">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="comparison-content" class="tab-content hidden">
+                        <div class="overflow-x-auto">
+                            <table class="min-w-full bg-white">
+                                <thead class="bg-steel-blue text-white">
+                                    <tr>
+                                        <th class="py-3 px-4 text-left">Feature</th>
+                                        <th class="py-3 px-4 text-left">Aluminum</th>
+                                        <th class="py-3 px-4 text-left">PVC</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-gray-200">
+                                    <tr>
+                                        <td class="py-3 px-4 font-medium">Durability</td>
+                                        <td class="py-3 px-4">Excellent (30+ years)</td>
+                                        <td class="py-3 px-4">Good (20-25 years)</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="py-3 px-4 font-medium">Thermal Insulation</td>
+                                        <td class="py-3 px-4">Good (with thermal break)</td>
+                                        <td class="py-3 px-4">Excellent</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="py-3 px-4 font-medium">Maintenance</td>
+                                        <td class="py-3 px-4">Low</td>
+                                        <td class="py-3 px-4">Very Low</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="py-3 px-4 font-medium">Cost</td>
+                                        <td class="py-3 px-4">Higher initial cost</td>
+                                        <td class="py-3 px-4">More affordable</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="py-3 px-4 font-medium">Best For</td>
+                                        <td class="py-3 px-4">Modern designs, large spans</td>
+                                        <td class="py-3 px-4">Energy efficiency, budget</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="mt-6 text-center">
+                            <a href="#contact" class="inline-block bg-safety-orange hover:bg-orange-600 text-white font-bold py-2 px-6 rounded transition duration-300">
+                                Get Personalized Recommendation
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 text-charcoal-gray">Our Work Speaks for Itself</h2>
+            <p class="text-center text-gray-600 max-w-2xl mx-auto mb-12">Browse our recent projects across all service categories</p>
+
+            <!-- Portfolio Filters -->
+            <div class="flex flex-wrap justify-center gap-3 mb-8">
+                <button class="portfolio-filter px-4 py-2 rounded-full bg-steel-blue text-white" data-filter="all">All Projects</button>
+                <button class="portfolio-filter px-4 py-2 rounded-full bg-gray-200 hover:bg-steel-blue hover:text-white transition" data-filter="fabrication">Fabrication</button>
+                <button class="portfolio-filter px-4 py-2 rounded-full bg-gray-200 hover:bg-steel-blue hover:text-white transition" data-filter="welding">Welding</button>
+                <button class="portfolio-filter px-4 py-2 rounded-full bg-gray-200 hover:bg-steel-blue hover:text-white transition" data-filter="aluminum">Aluminum</button>
+                <button class="portfolio-filter px-4 py-2 rounded-full bg-gray-200 hover:bg-steel-blue hover:text-white transition" data-filter="pvc">PVC</button>
+            </div>
+
+            <!-- Portfolio Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Project 1 -->
+                <div class="portfolio-item rounded-lg overflow-hidden shadow-md" data-category="fabrication">
+                    <img src="https://images.unsplash.com/photo-1605152276897-4f618f831968?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Custom metal gate" class="w-full h-64 object-cover cursor-pointer" onclick="openLightbox(this)">
+                    <div class="p-4">
+                        <h3 class="text-xl font-bold mb-2 text-charcoal-gray">Luxury Estate Gate</h3>
+                        <p class="text-gray-600 mb-3">Custom-designed security gate with ornamental details for a high-end residential property in Ikoyi.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm bg-steel-blue text-white px-3 py-1 rounded-full">Fabrication</span>
+                            <button class="text-safety-orange hover:underline" onclick="openProjectDetails('project1')">View Details</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="portfolio-item rounded-lg overflow-hidden shadow-md" data-category="welding">
+                    <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Industrial welding" class="w-full h-64 object-cover cursor-pointer" onclick="openLightbox(this)">
+                    <div class="p-4">
+                        <h3 class="text-xl font-bold mb-2 text-charcoal-gray">Industrial Storage Tanks</h3>
+                        <p class="text-gray-600 mb-3">Large-scale stainless steel tanks for a manufacturing facility in Apapa.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm bg-steel-blue text-white px-3 py-1 rounded-full">Welding</span>
+                            <button class="text-safety-orange hover:underline" onclick="openProjectDetails('project2')">View Details</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="portfolio-item rounded-lg overflow-hidden shadow-md" data-category="aluminum">
+                    <img src="https://images.unsplash.com/photo-1600566752355-35792bedcfe3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Aluminum windows" class="w-full h-64 object-cover cursor-pointer" onclick="openLightbox(this)">
+                    <div class="p-4">
+                        <h3 class="text-xl font-bold mb-2 text-charcoal-gray">Office Building Windows</h3>
+                        <p class="text-gray-600 mb-3">Energy-efficient aluminum window system for a commercial complex in Victoria Island.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm bg-steel-blue text-white px-3 py-1 rounded-full">Aluminum</span>
+                            <button class="text-safety-orange hover:underline" onclick="openProjectDetails('project3')">View Details</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="portfolio-item rounded-lg overflow-hidden shadow-md" data-category="pvc">
+                    <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="PVC windows" class="w-full h-64 object-cover cursor-pointer" onclick="openLightbox(this)">
+                    <div class="p-4">
+                        <h3 class="text-xl font-bold mb-2 text-charcoal-gray">Residential PVC Windows</h3>
+                        <p class="text-gray-600 mb-3">Complete PVC window replacement for a residential estate in Lekki Phase 1.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm bg-steel-blue text-white px-3 py-1 rounded-full">PVC</span>
+                            <button class="text-safety-orange hover:underline" onclick="openProjectDetails('project4')">View Details</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 5 -->
+                <div class="portfolio-item rounded-lg overflow-hidden shadow-md" data-category="fabrication">
+                    <img src="https://images.unsplash.com/photo-1605152225962-b0a85a5f6aaa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Staircase railing" class="w-full h-64 object-cover cursor-pointer" onclick="openLightbox(this)">
+                    <div class="p-4">
+                        <h3 class="text-xl font-bold mb-2 text-charcoal-gray">Modern Staircase Railing</h3>
+                        <p class="text-gray-600 mb-3">Custom stainless steel and glass railing system for a luxury penthouse.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm bg-steel-blue text-white px-3 py-1 rounded-full">Fabrication</span>
+                            <button class="text-safety-orange hover:underline" onclick="openProjectDetails('project5')">View Details</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 6 -->
+                <div class="portfolio-item rounded-lg overflow-hidden shadow-md" data-category="welding">
+                    <img src="https://images.unsplash.com/photo-1581094271901-8022df4466f9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Decorative metalwork" class="w-full h-64 object-cover cursor-pointer" onclick="openLightbox(this)">
+                    <div class="p-4">
+                        <h3 class="text-xl font-bold mb-2 text-charcoal-gray">Artistic Metal Sculpture</h3>
+                        <p class="text-gray-600 mb-3">Custom decorative metal artwork for a corporate headquarters lobby.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm bg-steel-blue text-white px-3 py-1 rounded-full">Welding</span>
+                            <button class="text-safety-orange hover:underline" onclick="openProjectDetails('project6')">View Details</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-10">
+                <a href="#portfolio" class="inline-block bg-charcoal-gray hover:bg-gray-800 text-white font-bold py-3 px-8 rounded-full transition duration-300">
+                    View Full Portfolio
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                <div class="lg:w-1/2">
+                    <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="G-BAKA workshop" class="rounded-lg shadow-xl">
+                </div>
+
+                <div class="lg:w-1/2">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6 text-charcoal-gray">Our Story: Built on Quality & Craftsmanship</h2>
+                    <p class="text-gray-600 mb-6">Founded in 2012, G-BAKA Welding and Fabrication Workshop has grown from a small local operation to one of Lagos' most trusted metalwork specialists. Our journey has been guided by an uncompromising commitment to quality and customer satisfaction.</p>
+
+                    <div class="space-y-4 mb-8">
+                        <div class="flex items-start">
+                            <div class="bg-safety-orange text-white p-2 rounded-full mr-4">
+                                <i class="fas fa-bullseye text-lg"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-lg mb-1 text-charcoal-gray">Our Mission</h3>
+                                <p class="text-gray-600">To deliver precision metal fabrication solutions that combine durability, functionality, and aesthetic appeal.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start">
+                            <div class="bg-safety-orange text-white p-2 rounded-full mr-4">
+                                <i class="fas fa-eye text-lg"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-lg mb-1 text-charcoal-gray">Our Vision</h3>
+                                <p class="text-gray-600">To be the preferred partner for all metal fabrication needs across South-West Nigeria.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start">
+                            <div class="bg-safety-orange text-white p-2 rounded-full mr-4">
+                                <i class="fas fa-hand-holding-heart text-lg"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-lg mb-1 text-charcoal-gray">Our Values</h3>
+                                <p class="text-gray-600">Integrity, craftsmanship, innovation, and customer-focused service.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h3 class="text-xl font-bold mb-4 text-charcoal-gray">Why Choose G-BAKA?</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-safety-orange mt-1 mr-2"></i>
+                                <span>Certified welders with extensive training</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-safety-orange mt-1 mr-2"></i>
+                                <span>Premium materials from trusted suppliers</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-safety-orange mt-1 mr-2"></i>
+                                <span>Precision engineering with attention to detail</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-safety-orange mt-1 mr-2"></i>
+                                <span>Comprehensive 5-year warranty on fabrication work</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-safety-orange mt-1 mr-2"></i>
+                                <span>Timely project completion with minimal disruption</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-charcoal-gray">Meet Our Expert Team</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Team Member 1 -->
+                <div class="bg-gray-50 rounded-lg overflow-hidden shadow-md text-center">
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80" alt="Chief Engineer" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-1 text-charcoal-gray">Engr. Gabriel Baka</h3>
+                        <p class="text-safety-orange font-medium mb-3">Chief Engineer & Founder</p>
+                        <p class="text-gray-600 mb-4">With over 15 years in metal fabrication, Gabriel ensures every project meets our exacting standards.</p>
+                        <div class="flex justify-center space-x-3">
+                            <a href="#" class="text-steel-blue hover:text-safety-orange"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="text-steel-blue hover:text-safety-orange"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Team Member 2 -->
+                <div class="bg-gray-50 rounded-lg overflow-hidden shadow-md text-center">
+                    <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80" alt="Fabrication Manager" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-1 text-charcoal-gray">Adebayo Johnson</h3>
+                        <p class="text-safety-orange font-medium mb-3">Fabrication Manager</p>
+                        <p class="text-gray-600 mb-4">Specializing in structural steelwork, Adebayo oversees all custom fabrication projects.</p>
+                        <div class="flex justify-center space-x-3">
+                            <a href="#" class="text-steel-blue hover:text-safety-orange"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="text-steel-blue hover:text-safety-orange"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Team Member 3 -->
+                <div class="bg-gray-50 rounded-lg overflow-hidden shadow-md text-center">
+                    <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1061&q=80" alt="Welding Specialist" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-1 text-charcoal-gray">Chioma Okeke</h3>
+                        <p class="text-safety-orange font-medium mb-3">Welding Specialist</p>
+                        <p class="text-gray-600 mb-4">Certified in TIG and MIG welding, Chioma handles our most delicate and decorative work.</p>
+                        <div class="flex justify-center space-x-3">
+                            <a href="#" class="text-steel-blue hover:text-safety-orange"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="text-steel-blue hover:text-safety-orange"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Team Member 4 -->
+                <div class="bg-gray-50 rounded-lg overflow-hidden shadow-md text-center">
+                    <img src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Installation Supervisor" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-1 text-charcoal-gray">Emeka Nwankwo</h3>
+                        <p class="text-safety-orange font-medium mb-3">Installation Supervisor</p>
+                        <p class="text-gray-600 mb-4">With expertise in window systems, Emeka ensures flawless installation at client sites.</p>
+                        <div class="flex justify-center space-x-3">
+                            <a href="#" class="text-steel-blue hover:text-safety-orange"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="text-steel-blue hover:text-safety-orange"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-16 bg-steel-blue text-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">What Our Clients Say</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card p-6 rounded-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="text-3xl text-safety-orange mr-3">
+                            <i class="fas fa-quote-left"></i>
+                        </div>
+                        <div>
+                            <div class="flex">
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 mb-6">"The security gate G-BAKA fabricated for our estate is exceptional. After 3 years, it still looks and functions like new despite Lagos weather. Their attention to detail is remarkable."</p>
+                    <div class="flex items-center">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Client" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold text-charcoal-gray">Mr. Adekunle</h4>
+                            <p class="text-gray-600 text-sm">Estate Manager, Banana Island</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card p-6 rounded-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="text-3xl text-safety-orange mr-3">
+                            <i class="fas fa-quote-left"></i>
+                        </div>
+                        <div>
+                            <div class="flex">
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 mb-6">"We've used G-BAKA for multiple commercial projects. Their aluminum window systems are consistently high quality, and their installation team is professional and efficient."</p>
+                    <div class="flex items-center">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Client" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold text-charcoal-gray">Arch. Fatima Bello</h4>
+                            <p class="text-gray-600 text-sm">Principal Architect, FB Designs</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card p-6 rounded-lg">
+                    <div class="flex items-center mb-4">
+                        <div class="text-3xl text-safety-orange mr-3">
+                            <i class="fas fa-quote-left"></i>
+                        </div>
+                        <div>
+                            <div class="flex">
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 mb-6">"The PVC windows have made a noticeable difference in our home's temperature and noise levels. The installation was clean and completed ahead of schedule. Highly recommended!"</p>
+                    <div class="flex items-center">
+                        <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Client" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold text-charcoal-gray">Dr. & Mrs. Okon</h4>
+                            <p class="text-gray-600 text-sm">Homeowners, Lekki</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 text-charcoal-gray">Get in Touch</h2>
+            <p class="text-center text-gray-600 max-w-2xl mx-auto mb-12">Ready to start your project? Contact us for a free consultation and quote.</p>
+
+            <div class="flex flex-col lg:flex-row gap-12">
+                <!-- Contact Form -->
+                <div class="lg:w-1/2">
+                    <form class="bg-gray-50 p-8 rounded-lg shadow-md">
+                        <h3 class="text-xl font-bold mb-6 text-charcoal-gray">Send Us a Message</h3>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <label for="name" class="block text-gray-700 mb-2">Full Name*</label>
+                                <input type="text" id="name" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-steel-blue" required>
+                            </div>
+                            <div>
+                                <label for="email" class="block text-gray-700 mb-2">Email*</label>
+                                <input type="email" id="email" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-steel-blue" required>
+                            </div>
+                        </div>
+
+                        <div class="mb-6">
+                            <label for="phone" class="block text-gray-700 mb-2">Phone Number</label>
+                            <input type="tel" id="phone" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-steel-blue">
+                        </div>
+
+                        <div class="mb-6">
+                            <label for="service" class="block text-gray-700 mb-2">Service Needed*</label>
+                            <select id="service" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-steel-blue" required>
+                                <option value="">Select a service</option>
+                                <option value="fabrication">Metal Fabrication</option>
+                                <option value="welding">Welding Services</option>
+                                <option value="aluminum">Aluminum Solutions</option>
+                                <option value="pvc">PVC Systems</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-6">
+                            <label for="message" class="block text-gray-700 mb-2">Project Details*</label>
+                            <textarea id="message" rows="4" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-steel-blue" required></textarea>
+                        </div>
+
+                        <div class="mb-6">
+                            <div class="g-recaptcha" data-sitekey="YOUR_RECAPTCHA_SITE_KEY"></div>
+                        </div>
+
+                        <button type="submit" class="w-full bg-safety-orange hover:bg-orange-600 text-white font-bold py-3 px-4 rounded-lg transition duration-300">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Contact Info & Quick Quote -->
+                <div class="lg:w-1/2">
+                    <div class="bg-gray-50 p-8 rounded-lg shadow-md mb-8">
+                        <h3 class="text-xl font-bold mb-6 text-charcoal-gray">Quick Quote Request</h3>
+
+                        <div class="mb-4">
+                            <label class="block text-gray-700 mb-2">Project Type*</label>
+                            <div class="flex flex-wrap gap-2">
+                                <button class="quote-option bg-gray-200 hover:bg-steel-blue hover:text-white px-4 py-2 rounded-full transition">Residential</button>
+                                <button class="quote-option bg-gray-200 hover:bg-steel-blue hover:text-white px-4 py-2 rounded-full transition">Commercial</button>
+                                <button class="quote-option bg-gray-200 hover:bg-steel-blue hover:text-white px-4 py-2 rounded-full transition">Industrial</button>
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="budget" class="block text-gray-700 mb-2">Estimated Budget*</label>
+                            <select id="budget" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-steel-blue" required>
+                                <option value="">Select budget range</option>
+                                <option value="100-500k">₦100,000 - ₦500,000</option>
+                                <option value="500k-1m">₦500,000 - ₦1,000,000</option>
+                                <option value="1m-5m">₦1,000,000 - ₦5,000,000</option>
+                                <option value="5m+">₦5,000,000+</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-6">
+                            <label for="timeline" class="block text-gray-700 mb-2">Project Timeline*</label>
+                            <select id="timeline" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-steel-blue" required>
+                                <option value="">Select timeline</option>
+                                <option value="urgent">Urgent (within 2 weeks)</option>
+                                <option value="1month">1 month</option>
+                                <option value="3months">1-3 months</option>
+                                <option value="flexible">Flexible</option>
+                            </select>
+                        </div>
+
+                        <button class="w-full bg-charcoal-gray hover:bg-gray-800 text-white font-bold py-3 px-4 rounded-lg transition duration-300">
+                            Get Quick Quote
+                        </button>
+                    </div>
+
+                    <div class="bg-gray-50 p-8 rounded-lg shadow-md">
+                        <h3 class="text-xl font-bold mb-6 text-charcoal-gray">Contact Information</h3>
+
+                        <div class="space-y-5">
+                            <div class="flex items-start">
+                                <div class="bg-safety-orange text-white p-3 rounded-full mr-4">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800">Workshop Address</h4>
+                                    <p class="text-gray-600">12 Industrial Avenue, Ikeja, Lagos, Nigeria</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start">
+                                <div class="bg-safety-orange text-white p-3 rounded-full mr-4">
+                                    <i class="fas fa-phone-alt"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800">Call Us</h4>
+                                    <p class="text-gray-600">+234 812 345 6789 (Office)</p>
+                                    <p class="text-gray-600">+234 812 345 6790 (WhatsApp)</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start">
+                                <div class="bg-safety-orange text-white p-3 rounded-full mr-4">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800">Email Us</h4>
+                                    <p class="text-gray-600">info@gbakawelding.com</p>
+                                    <p class="text-gray-600">quotes@gbakawelding.com</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start">
+                                <div class="bg-safety-orange text-white p-3 rounded-full mr-4">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800">Working Hours</h4>
+                                    <p class="text-gray-600">Monday - Friday: 8:00 AM - 6:00 PM</p>
+                                    <p class="text-gray-600">Saturday: 9:00 AM - 4:00 PM</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-6">
+                            <h4 class="font-bold text-gray-800 mb-3">Follow Us</h4>
+                            <div class="flex space-x-4">
+                                <a href="#" class="bg-steel-blue text-white p-3 rounded-full hover:bg-blue-700 transition">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a href="#" class="bg-steel-blue text-white p-3 rounded-full hover:bg-pink-600 transition">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="#" class="bg-steel-blue text-white p-3 rounded-full hover:bg-blue-400 transition">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="#" class="bg-steel-blue text-white p-3 rounded-full hover:bg-blue-600 transition">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <div class="bg-gray-100 py-8">
+        <div class="container mx-auto px-4">
+            <h3 class="text-2xl font-bold text-center mb-8 text-charcoal-gray">Our Service Area</h3>
+            <div class="bg-white p-4 rounded-lg shadow-md">
+                <!-- Embedded Google Map -->
+                <div class="aspect-w-16 aspect-h-9">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.621030318223!2d3.342214315328374!3d6.447418225239693!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b8d2ea8a5f3a1%3A0xddc6c0a3c4b1c6b5!2sIkeja%2C%20Lagos!5e0!3m2!1sen!2sng!4v1620000000000!5m2!1sen!2sng"
+                            width="100%"
+                            height="450"
+                            style="border:0;"
+                            allowfullscreen=""
+                            loading="lazy"
+                            class="rounded-lg">
+                    </iframe>
+                </div>
+                <div class="mt-4 text-center text-gray-600">
+                    <p>We serve clients across Lagos State including Ikeja, Victoria Island, Lekki, Ajah, and surrounding areas.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-charcoal-gray text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4 flex items-center">
+                        <i class="fas fa-wrench text-safety-orange mr-2"></i> G-BAKA
+                    </h3>
+                    <p class="mb-4">Precision in Every Weld since 2012. Your trusted partner for quality metal fabrication and installation services.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-white hover:text-safety-orange transition"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="text-white hover:text-safety-orange transition"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white hover:text-safety-orange transition"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="text-white hover:text-safety-orange transition"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="hover:text-safety-orange transition">Home</a></li>
+                        <li><a href="#services" class="hover:text-safety-orange transition">Services</a></li>
+                        <li><a href="#portfolio" class="hover:text-safety-orange transition">Portfolio</a></li>
+                        <li><a href="#about" class="hover:text-safety-orange transition">About Us</a></li>
+                        <li><a href="#contact" class="hover:text-safety-orange transition">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Services</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#metal-fabrication" class="hover:text-safety-orange transition">Metal Fabrication</a></li>
+                        <li><a href="#welding-services" class="hover:text-safety-orange transition">Welding Services</a></li>
+                        <li><a href="#aluminum-solutions" class="hover:text-safety-orange transition">Aluminum Solutions</a></li>
+                        <li><a href="#pvc-systems" class="hover:text-safety-orange transition">PVC Systems</a></li>
+                        <li><a href="#" class="hover:text-safety-orange transition">Maintenance Services</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Newsletter</h3>
+                    <p class="mb-4">Subscribe to get updates on special offers and industry insights.</p>
+                    <form class="flex">
+                        <input type="email" placeholder="Your email" class="px-4 py-2 w-full rounded-l-lg focus:outline-none text-gray-800">
+                        <button type="submit" class="bg-safety-orange hover:bg-orange-600 px-4 py-2 rounded-r-lg transition">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-700 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p>&copy; 2023 G-BAKA Welding and Fabrication Workshop. All rights reserved.</p>
+                    <div class="flex space-x-6 mt-4 md:mt-0">
+                        <a href="#" class="hover:text-safety-orange transition">Privacy Policy</a>
+                        <a href="#" class="hover:text-safety-orange transition">Terms of Service</a>
+                        <a href="#" class="hover:text-safety-orange transition">Sitemap</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </footer>
 
-    <script src="js/script.js"></script>
+    <!-- Lightbox -->
+    <div id="lightbox" class="lightbox">
+        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+        <img id="lightbox-image" class="lightbox-content" src="" alt="Enlarged view">
+    </div>
+
+    <!-- Project Details Modal -->
+    <div id="project-modal" class="hidden fixed inset-0 bg-black bg-opacity-75 z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+            <div class="p-6">
+                <div class="flex justify-between items-start mb-4">
+                    <h3 id="modal-title" class="text-2xl font-bold text-charcoal-gray"></h3>
+                    <button onclick="closeProjectDetails()" class="text-gray-500 hover:text-gray-700">
+                        <i class="fas fa-times text-2xl"></i>
+                    </button>
+                </div>
+
+                <div id="modal-content" class="space-y-4">
+                    <!-- Content will be inserted here by JavaScript -->
+                </div>
+
+                <div class="mt-8">
+                    <a href="#contact" class="inline-block bg-safety-orange hover:bg-orange-600 text-white font-bold py-2 px-6 rounded transition duration-300">
+                        Get a Similar Project
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/2348123456789" class="fixed bottom-6 right-6 bg-green-500 text-white p-4 rounded-full shadow-lg hover:bg-green-600 transition z-50">
+        <i class="fab fa-whatsapp text-2xl"></i>
+    </a>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Material Comparison Tabs
+        const tabs = document.querySelectorAll('.material-tab');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs and contents
+                tabs.forEach(t => t.classList.remove('active'));
+                tabContents.forEach(c => c.classList.remove('active')); // This should be c.classList.remove('hidden') and c.classList.add('active') for the selected one
+
+                // Add active class to clicked tab
+                tab.classList.add('active');
+
+                // Show corresponding content
+                const tabId = tab.getAttribute('data-tab');
+                const activeContent = document.getElementById(`${tabId}-content`);
+                activeContent.classList.remove('hidden'); // Ensure it's not hidden
+                activeContent.classList.add('active'); // Add active class to display it
+
+                // Hide other tab contents
+                tabContents.forEach(c => {
+                    if (c !== activeContent) {
+                        c.classList.add('hidden');
+                        c.classList.remove('active');
+                    }
+                });
+            });
+        });
+
+        // Portfolio Filtering
+        const portfolioFilters = document.querySelectorAll('.portfolio-filter');
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+        portfolioFilters.forEach(filter => {
+            filter.addEventListener('click', () => {
+                // Update active filter button
+                portfolioFilters.forEach(f => {
+                    if (f === filter) {
+                        f.classList.remove('bg-gray-200', 'hover:bg-steel-blue', 'hover:text-white');
+                        f.classList.add('bg-steel-blue', 'text-white');
+                    } else {
+                        f.classList.remove('bg-steel-blue', 'text-white');
+                        f.classList.add('bg-gray-200', 'hover:bg-steel-blue', 'hover:text-white');
+                    }
+                });
+
+                // Filter items
+                const filterValue = filter.getAttribute('data-filter');
+
+                portfolioItems.forEach(item => {
+                    if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Quick Quote Options
+        const quoteOptions = document.querySelectorAll('.quote-option');
+
+        quoteOptions.forEach(option => {
+            option.addEventListener('click', (e) => {
+                e.preventDefault();
+                quoteOptions.forEach(opt => opt.classList.remove('bg-steel-blue', 'text-white'));
+                option.classList.add('bg-steel-blue', 'text-white');
+            });
+        });
+
+        // Lightbox Functionality
+        function openLightbox(element) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-image');
+
+            lightboxImg.src = element.src;
+            lightbox.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close lightbox when clicking outside the image
+        window.addEventListener('click', (e) => {
+            const lightbox = document.getElementById('lightbox');
+            if (e.target === lightbox) {
+                closeLightbox();
+            }
+        });
+
+        // Project Details Modal
+        const projectDetails = {
+            'project1': {
+                title: 'Luxury Estate Gate - Ikoyi',
+                content: `
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <img src="https://images.unsplash.com/photo-1605152276897-4f618f831968?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Luxury Estate Gate" class="rounded-lg shadow-sm">
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg mb-2">Project Details</h4>
+                            <ul class="space-y-2 mb-4">
+                                <li><strong>Client:</strong> High-end residential estate</li>
+                                <li><strong>Location:</strong> Ikoyi, Lagos</li>
+                                <li><strong>Materials:</strong> Powder-coated steel with ornamental details</li>
+                                <li><strong>Duration:</strong> 3 weeks</li>
+                                <li><strong>Special Features:</strong> Automated opening system, anti-climb design</li>
+                            </ul>
+                            <h4 class="font-bold text-lg mb-2">Challenges Solved</h4>
+                            <p>This security gate needed to provide maximum protection while maintaining the aesthetic appeal of the luxury estate. Our solution combined 12mm thick steel bars with decorative scrollwork that doesn't compromise security. The automated system was integrated with the estate's existing security infrastructure.</p>
+                        </div>
+                    </div>
+                `
+            },
+            'project2': {
+                title: 'Industrial Storage Tanks - Apapa',
+                content: `
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Industrial Storage Tanks" class="rounded-lg shadow-sm">
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg mb-2">Project Details</h4>
+                            <ul class="space-y-2 mb-4">
+                                <li><strong>Client:</strong> Manufacturing company</li>
+                                <li><strong>Location:</strong> Apapa Industrial Zone</li>
+                                <li><strong>Materials:</strong> 304-grade stainless steel</li>
+                                <li><strong>Duration:</strong> 6 weeks</li>
+                                <li><strong>Capacity:</strong> 20,000 liters each (4 units)</li>
+                            </ul>
+                            <h4 class="font-bold text-lg mb-2">Challenges Solved</h4>
+                            <p>The tanks needed to withstand corrosive chemicals while meeting strict food-grade safety standards. Our team used TIG welding for superior seam quality and implemented a double-wall design with leak detection between layers. The project was completed during the client's scheduled maintenance shutdown without delays.</p>
+                        </div>
+                    </div>
+                `
+            },
+            'project3': {
+                title: 'Office Building Windows - Victoria Island',
+                content: `
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <img src="https://images.unsplash.com/photo-1600566752355-35792bedcfe3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Office Building Windows" class="rounded-lg shadow-sm">
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg mb-2">Project Details</h4>
+                            <ul class="space-y-2 mb-4">
+                                <li><strong>Client:</strong> Commercial property developer</li>
+                                <li><strong>Location:</strong> Victoria Island, Lagos</li>
+                                <li><strong>Materials:</strong> Thermal-break aluminum system</li>
+                                <li><strong>Duration:</strong> 8 weeks (phased installation)</li>
+                                <li><strong>Special Features:</strong> Hurricane-resistant, energy-efficient</li>
+                            </ul>
+                            <h4 class="font-bold text-lg mb-2">Challenges Solved</h4>
+                            <p>The 15-story office tower required windows that could withstand coastal weather conditions while reducing cooling costs. Our solution used thermally broken aluminum frames with low-E glass to minimize heat transfer. The installation was carefully scheduled around other construction activities to avoid delays in the overall project timeline.</p>
+                        </div>
+                    </div>
+                `
+            },
+            'project4': {
+                title: 'Residential PVC Windows - Lekki Phase 1',
+                content: `
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Residential PVC Windows" class="rounded-lg shadow-sm">
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg mb-2">Project Details</h4>
+                            <ul class="space-y-2 mb-4">
+                                <li><strong>Client:</strong> Residential Estate Developer</li>
+                                <li><strong>Location:</strong> Lekki Phase 1, Lagos</li>
+                                <li><strong>Materials:</strong> High-grade uPVC profiles</li>
+                                <li><strong>Duration:</strong> 4 weeks for 20 units</li>
+                                <li><strong>Special Features:</strong> Double-glazed, soundproof, multi-point locking</li>
+                            </ul>
+                            <h4 class="font-bold text-lg mb-2">Challenges Solved</h4>
+                            <p>The client required a quick turnaround for 20 residential units without compromising on quality or insulation. Our team pre-fabricated the window units off-site, allowing for rapid installation once on-site. The double-glazing significantly improved thermal and acoustic insulation, a key selling point for the developer.</p>
+                        </div>
+                    </div>
+                `
+            },
+             'project5': {
+                title: 'Modern Staircase Railing - Penthouse',
+                content: `
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <img src="https://images.unsplash.com/photo-1605152225962-b0a85a5f6aaa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Modern Staircase Railing" class="rounded-lg shadow-sm">
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg mb-2">Project Details</h4>
+                            <ul class="space-y-2 mb-4">
+                                <li><strong>Client:</strong> Private Penthouse Owner</li>
+                                <li><strong>Location:</strong> Eko Atlantic City, Lagos</li>
+                                <li><strong>Materials:</strong> Stainless steel, tempered glass</li>
+                                <li><strong>Duration:</strong> 5 weeks</li>
+                                <li><strong>Special Features:</strong> Cantilevered glass panels, LED handrail lighting</li>
+                            </ul>
+                            <h4 class="font-bold text-lg mb-2">Challenges Solved</h4>
+                            <p>The client desired a minimalist yet striking staircase railing. The main challenge was achieving the floating glass effect while ensuring structural integrity. Our engineers designed a custom mounting system concealed within the staircase structure. The integrated LED lighting added a subtle but luxurious touch.</p>
+                        </div>
+                    </div>
+                `
+            },
+            'project6': {
+                title: 'Artistic Metal Sculpture - Corporate HQ',
+                content: `
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <img src="https://images.unsplash.com/photo-1581094271901-8022df4466f9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Artistic Metal Sculpture" class="rounded-lg shadow-sm">
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg mb-2">Project Details</h4>
+                            <ul class="space-y-2 mb-4">
+                                <li><strong>Client:</strong> Multinational Corporation</li>
+                                <li><strong>Location:</strong> Ikoyi, Lagos</li>
+                                <li><strong>Materials:</strong> Corten steel, polished bronze</li>
+                                <li><strong>Duration:</strong> 10 weeks (design to installation)</li>
+                                <li><strong>Dimensions:</strong> 5 meters high, 3 meters wide</li>
+                            </ul>
+                            <h4 class="font-bold text-lg mb-2">Challenges Solved</h4>
+                            <p>The sculpture, designed by a renowned artist, involved complex curves and a mix of materials that required precise welding and finishing. Our team worked closely with the artist to translate their vision into a durable and impactful piece. Special patination techniques were used on the Corten steel to achieve the desired weathered look while ensuring longevity.</p>
+                        </div>
+                    </div>
+                `
+            }
+        };
+
+        function openProjectDetails(projectId) {
+            const modal = document.getElementById('project-modal');
+            const modalTitle = document.getElementById('modal-title');
+            const modalContent = document.getElementById('modal-content');
+
+            const details = projectDetails[projectId];
+
+            if (details) {
+                modalTitle.textContent = details.title;
+                modalContent.innerHTML = details.content;
+                modal.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeProjectDetails() {
+            const modal = document.getElementById('project-modal');
+            modal.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside
+        window.addEventListener('click', (e) => {
+            const modal = document.getElementById('project-modal');
+            if (e.target === modal) {
+                closeProjectDetails();
+            }
+        });
+
+        // Ensure the first tab content is visible on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            const firstTabContent = document.querySelector('.tab-content.active');
+            if (firstTabContent) {
+                firstTabContent.classList.remove('hidden');
+            }
+        });
+
+    </script>
 </body>
 </html>
